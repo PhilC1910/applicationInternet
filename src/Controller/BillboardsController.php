@@ -22,6 +22,7 @@ class BillboardsController extends AppController
     {
         $billboards = $this->paginate($this->Billboards);
 
+        
         $this->set(compact('billboards'));
     }
 
@@ -38,6 +39,7 @@ class BillboardsController extends AppController
             'contain' => []
         ]);
 
+        
         $this->set('billboard', $billboard);
     }
 
@@ -50,16 +52,20 @@ class BillboardsController extends AppController
     {
         $billboard = $this->Billboards->newEntity();
         if ($this->request->is('post')) {
+        
             $billboard = $this->Billboards->patchEntity($billboard, $this->request->getData());
             if ($this->Billboards->save($billboard)) {
                 $this->Flash->success(__('The billboard has been saved.'));
 
+                
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The billboard could not be saved. Please, try again.'));
         }
+        
         $this->set(compact('billboard'));
     }
+    
 
     /**
      * Edit method
@@ -107,25 +113,32 @@ class BillboardsController extends AppController
           public function isAuthorized($user) {
         $action = $this->request->getParam('action');
         $role = $user['role_id'];
+    
         $verifier = $user['verifies'];
         if ($role === "client") {
             if(in_array($action, ['display', 'view', 'index'])){
                  return true;
-            } else {
+        
+                 } else {
                 return false;
             }
+            
         }
         
         if($role === "agent de marketing"   ){
            
+            
             if(in_array($action, ['edit','display', 'view', 'index']) && $verifier) {
+            
                 return true;
             } else {
+            
                 return false;
             }
         }
          if($role === "admin" ){
             if(in_array($action, ['delete','add','edit','display', 'view', 'index'])&& $verifier) {
+                
                 return true;
             } else {
                 return false;
@@ -140,7 +153,11 @@ class BillboardsController extends AppController
         
         $this->Auth->allow(['display', 'view', 'index']);
         
-    }    public function __construct(\Cake\Http\ServerRequest $request = null, \Cake\Http\Response $response = null, $name = null, $eventManager = null, $components = null) {
+        
+    }   
+    public function __construct(\Cake\Http\ServerRequest $request = null, \Cake\Http\Response $response = null, $name = null, $eventManager = null, $components = null) {
         parent::__construct($request, $response, $name, $eventManager, $components);
+    
+        
     }
 }

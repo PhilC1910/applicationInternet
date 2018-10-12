@@ -107,8 +107,10 @@ class RefHiringPartyTypesController extends AppController
           public function isAuthorized($user) {
         $action = $this->request->getParam('action');
         $role = $user['role_id'];
-      $verifier = $user['verifies'];
-        if ($role === "client") {
+      
+        $verifier = $user['verifies'];
+        
+      if ($role === "client") {
             if(in_array($action, ['display', 'view', 'index'])){
                  return true;
             } else {
@@ -116,7 +118,8 @@ class RefHiringPartyTypesController extends AppController
             }
         }
         
-       if($role === "agent de marketing"   ){
+       
+        if($role === "agent de marketing"   ){
            
             if(in_array($action, ['edit','display', 'view', 'index']) && $verifier) {
                 return true;
@@ -124,7 +127,8 @@ class RefHiringPartyTypesController extends AppController
                 return false;
             }
         }
-         if($role === "admin" ){
+        
+        if($role === "admin" ){
             if(in_array($action, ['delete','add','edit','display', 'view', 'index'])&& $verifier) {
                 return true;
             } else {

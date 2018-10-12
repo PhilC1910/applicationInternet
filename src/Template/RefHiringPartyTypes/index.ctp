@@ -36,8 +36,10 @@
                 <td><?= h($refHiringPartyType->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $refHiringPartyType->hiring_party_type_code_id]) ?>
-                    <?php if($userrole === "agent de marketing"|| $userrole === "admin"){echo $this->Html->link(__('Edit'), ['action' => 'edit', $refHiringPartyType->hiring_party_type_code_id]) ;} ?>?>
-                    <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $refHiringPartyType->hiring_party_type_code_id], ['confirm' => __('Are you sure you want to delete # {0}?', $refHiringPartyType->hiring_party_type_code_id)]);} ?>
+                   
+ <?php if($userrole === "agent de marketing"|| $userrole === "admin"){echo $this->Html->link(__('Edit'), ['action' => 'edit', $refHiringPartyType->hiring_party_type_code_id]) ;} ?>?>
+                 
+   <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $refHiringPartyType->hiring_party_type_code_id], ['confirm' => __('Are you sure you want to delete # {0}?', $refHiringPartyType->hiring_party_type_code_id)]);} ?>
                 </td>
             </tr>
             <?php endforeach; ?>

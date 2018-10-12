@@ -13,10 +13,13 @@
 <div class="files form large-9 medium-8 columns content">
     <?= $this->Form->create($file, ['type' => 'file']) ?>
     <fieldset>
+   
         <legend><?= __('Add File') ?></legend>
-        <?php
+      
+  <?php
           echo $this->Form->control('name', ['type' => 'file']);
-            echo $this->Form->control('status');
+      
+          echo $this->Form->control('status');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

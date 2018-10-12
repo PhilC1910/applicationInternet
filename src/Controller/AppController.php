@@ -47,6 +47,7 @@ class AppController extends Controller
         ]);
         $this->loadComponent('Flash');
 
+       
         $this->loadComponent('Auth', [
             // Added this line
             'authorize' => 'Controller',
@@ -79,12 +80,16 @@ class AppController extends Controller
     //$this->loadComponent('Security');
 
     public function isAuthorized($user) {
+     
         // By default deny access.
         return false;
     }
     
-       public function changeLang($lang = 'fr_CA') {
-        I18n::setLocale($lang);
+      
+    public function changeLang($lang = 'fr_CA') {
+      
+           I18n::setLocale($lang);
+     
         $this->request->session()->write('Config.language', $lang);
         return $this->redirect($this->request->referer());
     }

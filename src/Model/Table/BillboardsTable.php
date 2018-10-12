@@ -32,6 +32,7 @@ class BillboardsTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
+       
         $this->addBehavior('Translate', ['fields' => ['billboard_details']]);
         $this->setTable('billboards');
         $this->setDisplayField('billboard_id');

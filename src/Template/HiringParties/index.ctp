@@ -3,8 +3,10 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\HiringParty[]|\Cake\Collection\CollectionInterface $hiringParties
  */
- $loguser = $this->request->session()->read('Auth.User');
- $userrole = $loguser['role_id'];
+
+$loguser = $this->request->session()->read('Auth.User');
+
+$userrole = $loguser['role_id'];
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -36,9 +38,12 @@
                 <td><?= h($hiringParty->created) ?></td>
                 <td><?= h($hiringParty->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $hiringParty->hiring_party_id]) ?>
-                    <?php if($userrole === "agent de marketing"|| $userrole === "admin"){echo$this->Html->link(__('Edit'), ['action' => 'edit', $hiringParty->hiring_party_id]) ;} ?>
-                    <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $hiringParty->hiring_party_id], ['confirm' => __('Are you sure you want to delete # {0}?', $hiringParty->hiring_party_id)]) ;} ?> 
+              
+      <?= $this->Html->link(__('View'), ['action' => 'view', $hiringParty->hiring_party_id]) ?>
+                
+    <?php if($userrole === "agent de marketing"|| $userrole === "admin"){echo$this->Html->link(__('Edit'), ['action' => 'edit', $hiringParty->hiring_party_id]) ;} ?>
+             
+       <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $hiringParty->hiring_party_id], ['confirm' => __('Are you sure you want to delete # {0}?', $hiringParty->hiring_party_id)]) ;} ?> 
                 </td>
             </tr>
             <?php endforeach; ?>

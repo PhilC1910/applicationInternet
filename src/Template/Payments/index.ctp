@@ -37,9 +37,12 @@
                 <td><?= h($payment->created) ?></td>
                 <td><?= h($payment->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $payment->payment_id]) ?>
-                    <?php if($userrole === "agent de marketing"|| $userrole === "admin"){echo $this->Html->link(__('Edit'), ['action' => 'edit', $payment->payment_id]) ;} ?>?>
-                    <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $payment->payment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $payment->payment_id)]);} ?>
+                   
+ <?= $this->Html->link(__('View'), ['action' => 'view', $payment->payment_id]) ?>
+                  
+  <?php if($userrole === "agent de marketing"|| $userrole === "admin"){echo $this->Html->link(__('Edit'), ['action' => 'edit', $payment->payment_id]) ;} ?>?>
+                 
+   <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $payment->payment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $payment->payment_id)]);} ?>
                 </td>
             </tr>
             <?php endforeach; ?>

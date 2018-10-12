@@ -17,6 +17,7 @@ class FilesController extends AppController
       public function isAuthorized($user) {
         $action = $this->request->getParam('action');
         // The edit and delete actions are allowed to logged in users for comments.
+      
         if (in_array($action, ['add', 'edit', 'delete'])) {
             return true;
         }
@@ -64,9 +65,11 @@ class FilesController extends AppController
                 $uploadPath = 'Files/';
                 $uploadFile = $uploadPath . $fileName;
                 if (move_uploaded_file($this->request->data['name']['tmp_name'], 'img/' . $uploadFile)) {
+           
                     $file = $this->Files->patchEntity($file, $this->request->getData());
                     $file->name = $fileName;
                     $file->path = $uploadPath;
+                    
                     if ($this->Files->save($file)) {
                         $this->Flash->success(__('File has been uploaded and inserted successfully.'));
                     } else {
@@ -79,6 +82,7 @@ class FilesController extends AppController
                 $this->Flash->error(__('Please choose a file to upload.'));
             }
         }
+        
         $this->set(compact('file'));
     }
 

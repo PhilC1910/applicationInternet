@@ -41,8 +41,10 @@
                 <td><?= h($invoice->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $invoice->invoice_id]) ?>
-                    <?php if($userrole === "agent de marketing"|| $userrole === "admin"){echo $this->Html->link(__('Edit'), ['action' => 'edit', $invoice->invoice_id]) ;} ?>
-                     <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $invoice->invoice_id], ['confirm' => __('Are you sure you want to delete # {0}?', $invoice->invoice_id)]) ;} ?>
+                   
+ <?php if($userrole === "agent de marketing"|| $userrole === "admin"){echo $this->Html->link(__('Edit'), ['action' => 'edit', $invoice->invoice_id]) ;} ?>
+                   
+  <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $invoice->invoice_id], ['confirm' => __('Are you sure you want to delete # {0}?', $invoice->invoice_id)]) ;} ?>
                 </td>
             </tr>
             <?php endforeach; ?>

@@ -38,14 +38,15 @@
                             'url' => ['action' => 'view', $file->file_id]
                         ]);
                         ?>
-                    </td>
+               
+                 </td>
                 <td><?= h($file->created) ?></td>
                 <td><?= h($file->modified) ?></td>
                 <td><?= $this->Number->format($file->status) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $file->file_id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $file->file_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $file->file_id], ['confirm' => __('Are you sure you want to delete # {0}?', $file->file_id)]) ?>
+                   <?php if($userrole === "agent de marketing"|| $userrole === "admin")$this->Html->link(__('Edit'), ['action' => 'edit', $file->file_id]) ?>
+                     <?php if($userrole === "admin") $this->Form->postLink(__('Delete'), ['action' => 'delete', $file->file_id], ['confirm' => __('Are you sure you want to delete # {0}?', $file->file_id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

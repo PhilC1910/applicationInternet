@@ -43,24 +43,31 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-bar-section">
             <ul class="right">
                   <li>
-                        <?php
+                      
+  <?php
                         $loguser = $this->request->session()->read('Auth.User');
                         if ($loguser) {
                             echo $this->Html->link(  $user = $loguser['username'], ['controller' => 'Users', 'action' => 'view',$loguser['user_id']]);
+                          
                             echo $this->Html->link( ' logout', ['controller' => 'Users', 'action' => 'logout']);
                         } else {
+                           
                             echo $this->Html->link('login', ['controller' => 'Users', 'action' => 'login']);
                         }
                         ?>
                     </li>
+                 
                     <li>
                         <?= $this->Html->link('Français', ['action' => 'changeLang', 'fr_CA'], ['escape' => false]) ?>
                     </li>
+                    
                     <li>
                         <?= $this->Html->link('English', ['action' => 'changeLang', 'en_US'], ['escape' => false]) ?>
                     </li>
-                      <li>
+                     
+                    <li>
                         <?= $this->Html->link('creole haiti', ['action' => 'changeLang', 'HT'], ['escape' => false]) ?>
+                   
                     </li>
                        <li>
                         <?= $this->Html->link('À Propos', ['controller' => 'Apropos', 'action' => 'index']) ?>

@@ -132,6 +132,7 @@ class UsersController extends AppController
     }
     
     public function dirigerVersPage($role) {
+   
         if ($role === 'admin'|| $role === 'client' || $role === 'agent de marketing' ) {
             return $this->redirect(['controller' => 'BillboardsHired', 'action' => 'index']);
         }
@@ -139,18 +140,22 @@ class UsersController extends AppController
 
     public function initialize() {
         parent::initialize();
+   
         $this->Auth->allow(['logout', 'add','confirm']);
     }
 
     public function logout() {
         $this->Flash->success('Vous avez été déconnecté.');
+     
         return $this->redirect($this->Auth->logout());
     }
     
     public function isAuthorized($user) {
         $action = $this->request->getParam('action');
+     
         $role = $user['role_id'];
 
+        
         if ($role === "admin") {
             return true;
         }
@@ -160,7 +165,9 @@ class UsersController extends AppController
     
       public function confirmationEmail($user) {
             $email = new Email('default');
+        
             $codeVerification = $user['codeConfirmation'];
+            
             
             $email->to($user['email'])
                     ->subject('Email de confirmation')
@@ -173,20 +180,20 @@ class UsersController extends AppController
       }
       
          public function confirm($codeVerification) {
+            
              $user = $this->Users->find('all',[
                 'conditions'=>[
                     'Users.codeConfirmation'=>$codeVerification                                       
                 ]                 
              ])->first();
              
+             
              $user['verifies']= true;
     
-            $this->Users->save($user);
-            $this->Auth->setUser($user);
+            
+             $this->Users->save($user);
+            
+             $this->Auth->setUser($user);
       }
-       public function getEmail() {
-           
-          //$result=$this->Users->find('all',['fields'='id'])->last();
-  
-      }
+     
 }

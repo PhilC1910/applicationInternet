@@ -116,11 +116,13 @@ class BillboardsHiredController extends AppController
           public function isAuthorized($user) {
         $action = $this->request->getParam('action');
         $role = $user['role_id'];
+        
         $verifier = $user['verifies'];
         if ($role === "client") {
             if(in_array($action, ['display', 'view', 'index'])){
                  return true;
             } else {
+                
                 return false;
             }
         }
@@ -128,6 +130,7 @@ class BillboardsHiredController extends AppController
       if($role === "agent de marketing"   ){
            
             if(in_array($action, ['edit','display', 'view', 'index']) && $verifier) {
+                
                 return true;
             } else {
                 return false;
@@ -147,6 +150,7 @@ class BillboardsHiredController extends AppController
     public function initialize() {
         parent::initialize();
         
+     
         $this->Auth->allow(['display', 'view', 'index']);
     }    public function __construct(\Cake\Http\ServerRequest $request = null, \Cake\Http\Response $response = null, $name = null, $eventManager = null, $components = null) {
         parent::__construct($request, $response, $name, $eventManager, $components);

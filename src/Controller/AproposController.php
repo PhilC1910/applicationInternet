@@ -16,6 +16,7 @@ class AproposController extends AppController
     
      public function index()
     {
+         
         $this->set(compact('Apropos'));
     }
     

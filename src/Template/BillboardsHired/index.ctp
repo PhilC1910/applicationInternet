@@ -49,9 +49,11 @@
                 <td><?= h($billboardsHired->modified) ?></td>
                 <td><?= $billboardsHired->has('user') ? $this->Html->link($billboardsHired->user->user_id, ['controller' => 'Users', 'action' => 'view', $billboardsHired->user->user_id]) : '' ?></td>
                 <td class="actions">
-                      <?= $this->Html->link(__('View'), ['action' => 'view', $billboardsHired->billboard_hire_id]) ?>
+                  
+    <?= $this->Html->link(__('View'), ['action' => 'view', $billboardsHired->billboard_hire_id]) ?>
                       <?php if($userrole === "agent de marketing"|| $userrole === "admin"){echo $this->Html->link(__('Edit'), ['action' => 'edit', $billboardsHired->billboard_hire_id]);} ?> 
-                      <?php if($userrole === "admin") {echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $billboardsHired->billboard_hire_id], ['confirm' => __('Are you sure you want to delete # {0}?', $billboardsHired->billboard_hire_id)]) ;} ?>
+                
+      <?php if($userrole === "admin") {echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $billboardsHired->billboard_hire_id], ['confirm' => __('Are you sure you want to delete # {0}?', $billboardsHired->billboard_hire_id)]) ;} ?>
                 </td>
             </tr>
             <?php endforeach; ?>

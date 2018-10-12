@@ -36,7 +36,8 @@ class HiringPartiesTable extends Table
         parent::initialize($config);
 
         $this->setTable('hiring_parties');
-          $this->addBehavior('Translate', ['fields' => ['hiring_party_details']]);
+        
+        $this->addBehavior('Translate', ['fields' => ['hiring_party_details']]);
         $this->setDisplayField('hiring_party_id');
         $this->setPrimaryKey('hiring_party_id');
 

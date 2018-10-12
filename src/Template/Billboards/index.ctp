@@ -19,22 +19,32 @@
             <tr>
                      <th scope="col"><?= $this->Paginator->sort('billboard_id') ?></th>
                      <th scope="col"><?= $this->Paginator->sort('billboard_details') ?></th>
+            
+                     
                      <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                      <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                     <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
+            
             <?php foreach ($billboards as $billboard): ?>
             <tr>
+            
                 <td><?= $this->Number->format($billboard->billboard_id) ?></td>
                      <td><?= h($billboard->billboard_details) ?></td>
                 <td><?= h($billboard->created) ?></td>
+            
                 <td><?= h($billboard->modified) ?></td>
+            
                 <td class="actions">
                          <?= $this->Html->link(__('View'), ['action' => 'view', $billboard->billboard_id]) ?>
-                            <?php if($userrole === "agent de marketing"|| $userrole === "admin" ){echo $this->Html->link(__('Edit'), ['action' => 'edit', $billboard->billboard_id]);} ?> 
-                        <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $billboard->billboard_id], ['confirm' => __('Are you sure you want to delete # {0}?', $billboard->billboard_id)]);} ?> 
+             
+               
+                             <?php if($userrole === "agent de marketing"|| $userrole === "admin" ){echo $this->Html->link(__('Edit'), ['action' => 'edit', $billboard->billboard_id]);} ?> 
+            
+            
+                                 <?php if($userrole === "admin"){echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $billboard->billboard_id], ['confirm' => __('Are you sure you want to delete # {0}?', $billboard->billboard_id)]);} ?> 
                 </td>
             </tr>
             <?php endforeach; ?>

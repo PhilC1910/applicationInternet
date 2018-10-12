@@ -13,10 +13,12 @@
             <li><?= $this->Html->link(__('New Billboards Hired'), ['action' => 'add']) ?> </li>
             <li><?= $this->Html->link(__('List Billboards'), ['controller' => 'Billboards', 'action' => 'index']) ?> </li>
             <li><?= $this->Html->link(__('New Billboard'), ['controller' => 'Billboards', 'action' => 'add']) ?> </li>
+      
             <li><?= $this->Html->link(__('List Hiring Parties'), ['controller' => 'HiringParties', 'action' => 'index']) ?> </li>
             <li><?= $this->Html->link(__('New Hiring Party'), ['controller' => 'HiringParties', 'action' => 'add']) ?> </li>
            <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-            <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+          
+           <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
             <li><?= $this->Html->link(__('List Invoices'), ['controller' => 'Invoices', 'action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('New Invoices'), ['controller' => 'Invoices', 'action' => 'add']) ?></li>
     </ul>
